@@ -14,8 +14,7 @@ def coincidence(array = '', range = '')
 	if !array.empty? && !range.empty? 
 		array = array.split(',')		
 		range = range.split('..')
-		range = (range[0].to_i..range[1].to_i).to_a
-		
+		range = (range[0].to_i..range[1].to_i).to_a		
 		array.each do |item|				
 				if range.include?(item.to_i)
 					new_array.push(item)
