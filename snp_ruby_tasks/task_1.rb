@@ -17,7 +17,6 @@ def palindrome(string)
 		puts "Я не понимаю что вы ввели!!!! Повторите:"
 		palindrome(gets.chomp)
 	end
-
 end
 
 puts "Введите строку:"
