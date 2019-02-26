@@ -23,7 +23,6 @@ class Dessert
     def delicious
     	return true 
     end
-
 end
 
 dessert = Dessert.new('cake', 250)
