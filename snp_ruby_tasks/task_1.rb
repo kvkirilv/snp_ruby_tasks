@@ -16,7 +16,7 @@ def palindrome(string)
 	else
 		puts "Я не понимаю что вы ввели!!!! Повторите:"
 		string = gets.chomp.to_s
-		palindrome(gets.chomp.to_s)
+		palindrome(string)
 	end
 end
 
