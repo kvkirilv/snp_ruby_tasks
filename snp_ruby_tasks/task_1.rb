@@ -6,7 +6,7 @@
 
 def palindrome(string) 
 	if !(string.empty? && !string.nil?) 
-		string.to_s.downcase!
+		string.downcase!
 		string.gsub!(/[^0-9A-Za-zА-Яа-я]/, '')		
 		if string == string.reverse			
 			return true
@@ -15,10 +15,12 @@ def palindrome(string)
 		end
 	else
 		puts "Я не понимаю что вы ввели!!!! Повторите:"
-		palindrome(gets.chomp)
+		string = gets.chomp.to_s
+		palindrome(gets.chomp.to_s)
 	end
 end
 
 puts "Введите строку:"
-puts palindrome(gets.chomp)
+string = gets.chomp.to_s
+puts palindrome(string)
 
