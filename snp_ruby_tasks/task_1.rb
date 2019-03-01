@@ -4,23 +4,21 @@
 конца), при условии игнорирования пробелов, знаков препинания и регистра. 
 =end
 
-def palindrome(string) 
-	if !(string.empty? && !string.nil?) 
+def palindrome(string)  
 		string.downcase!
 		string.gsub!(/[^0-9A-Za-zА-Яа-я]/, '')		
-		if string == string.reverse			
+		if string == string.reverse		#Проверяю что строка равна "перевернутой" строке	
 			return true
 		else
 			return false
-		end
-	else
-		puts "Я не понимаю что вы ввели!!!! Повторите:"
-		string = gets.chomp.to_s
-		palindrome(string)
-	end
+		end	
 end
 
 puts "Введите строку:"
-string = gets.chomp.to_s
+string = gets.chomp
+while string.empty?
+	puts "Я не понимаю что вы ввели!!!! Повторите:"
+	string = gets.chomp
+end
 puts palindrome(string)
 
