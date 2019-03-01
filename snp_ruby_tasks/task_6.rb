@@ -35,7 +35,7 @@ def rps_game_winner(game_array)
 				return player2.join(' ')
 			when "R"
 				return player1.join(' ')
-			end
+		end
 	when "S"
 		case player2[1] 
 			when "P"
@@ -44,7 +44,7 @@ def rps_game_winner(game_array)
 				return player1.join(' ')
 			when "R"
 				return player2.join(' ')
-			end
+		end
 	when "R"
 		case player2[1] 
 			when "P"
@@ -53,8 +53,21 @@ def rps_game_winner(game_array)
 				return player1.join(' ')
 			when "R"
 				return player1.join(' ')
-			end
+		end
 	end
 end
 
-puts(rps_game_winner([["KIRILOV",'P'], ['IVANOV', 'S']]))
+player1 = []
+player2 = []
+game_array = []
+puts "Пожалуйста заполните имя первого игрока:"
+player1[0] = gets.chomp
+puts "Заполните ход первого игрока P - бумага, S - ножницы, R - камень"
+player1[1] = gets.chomp
+game_array << player1
+puts "Пожалуйста заполните имя второго игрока:"
+player2[0] = gets.chomp
+puts "Заполните ход второго игрока P - бумага, S - ножницы, R - камень"
+player2[1] = gets.chomp
+game_array << player2
+puts rps_game_winner(game_array)

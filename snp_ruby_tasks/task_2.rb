@@ -9,7 +9,7 @@ coincidence() # => []
 coincidence([nil, 1, 'foo', 4, 2, 2.5], (1..3)) # => [1, 2, 2.5] 
 =end
 
-def coincidence(array = [], range = '')
+def coincidence(array = [], range)
 	new_array = Array.new() 
 	if !array.empty? && !range.to_a.empty? 
 		array.each do |item|				

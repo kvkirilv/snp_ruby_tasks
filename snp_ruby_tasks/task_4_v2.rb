@@ -13,12 +13,18 @@ def sort_array(array = [])
 	return array if array.empty?  
 	min_array_val = array.min
 	max_array_val = array.max
-	min_index = array.index(array.min)		  
-	max_index = array.index(array.max)
-	array[min_index] = max_array_val
-	array[max_index] = min_array_val
-	array.push(min_array_val)
-	return array
+	new_array = []
+	array.each do |item|
+		if item == min_array_val
+			new_array << max_array_val
+		elsif item == max_array_val
+			new_array << min_array_val
+		else
+			new_array << item
+		end
+	end
+	new_array << min_array_val
+	return new_array
 end
 
 puts "Пожалуйста введите массив целых чисел через ENTER:"

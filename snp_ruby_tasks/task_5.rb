@@ -24,4 +24,5 @@ def date_in_future(day)
 end
 
 puts "Пожалуйства введите целое число:"
-puts date_in_future(gets.chomp)
+day = gets.chomp
+puts date_in_future(day)

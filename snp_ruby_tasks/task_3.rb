@@ -10,10 +10,8 @@ max_odd(%w[ololo fufufu]) # => nil
 max_odd([2, 2, 4]) # => nil 
 =end
 
-def max_odd(array) 
-	max_elem = nil
-	array.gsub!(/[^0-9.,]/, '') # Тут удаляю все буквы и сцецсимволы из строки, возможно я не прав
-	array = array.split(',')
+def max_odd(array = []) 
+	max_elem = nil	
 	array.each do |item|
 		if (item.to_i % 2 != 0 && item.to_i > max_elem.to_i)
 			max_elem = item.to_i
@@ -22,7 +20,14 @@ def max_odd(array)
 	return max_elem
 end
 
-puts "Пожалуйста введите массив значений через запятую:"
-puts(max_odd(gets.chomp))
+puts "Пожалуйста введите массив значений через ENTER:"
+array = []
+while true
+	input = gets.chomp
+	break if input.empty? 
+	array << input
+end
+
+puts(max_odd(array))
 
 

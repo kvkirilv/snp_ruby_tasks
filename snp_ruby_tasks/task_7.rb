@@ -11,8 +11,15 @@ combine_anagrams(%w[cars for potatoes racs four scar creams scream] # =>
 "scream"] ] 
 =end
 
-def combine_anagrams(array_world)
-	return array_world.group_by { |item| item.downcase.chars.sort }.values
+def combine_anagrams(array_word)
+	return array_word.group_by { |item| item.downcase.chars.sort }.values
 end
 
-combine_anagrams(%w[cars for potatoes racs four scar creams scream])
+array_word = []
+puts "Пожалуйста заполните массив слов через ENTER:"
+while true
+	input = gets.chomp
+	break if input.empty?
+	array_word << input
+end
+puts combine_anagrams(array_word)
