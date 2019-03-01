@@ -8,9 +8,9 @@ def palindrome(string)
 		string.downcase!
 		string.gsub!(/[^0-9A-Za-zА-Яа-я]/, '')		
 		if string == string.reverse		#Проверяю что строка равна "перевернутой" строке	
-			return true
+			true
 		else
-			return false
+			false
 		end	
 end
 
