@@ -12,7 +12,7 @@ combine_anagrams(%w[cars for potatoes racs four scar creams scream] # =>
 =end
 
 def combine_anagrams(array_word)
-	return array_word.group_by { |item| item.downcase.chars.sort }.values
+	array_word.group_by { |item| item.downcase.chars.sort }.values
 end
 
 array_word = []
@@ -22,4 +22,6 @@ while true
 	break if input.empty?
 	array_word << input
 end
+
 puts combine_anagrams(array_word)
+puts combine_anagrams(%w[cars for potatoes racs four scar creams scream]) # =>[ ["cars", "racs", "scar"], ["four"], ["for"], ["potatoes"], ["creams","scream"] ] 
