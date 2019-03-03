@@ -13,16 +13,18 @@ date_in_future(2) # => текущая дата + 2 дня
 
 require 'active_support/all' 
 
-def date_in_future(day)
-	
-	day = Integer(day) rescue false
-	if day 
-		return day.days.from_now.utc
+def date_in_future(day)		
+	if day.is_a?(Integer) 
+		day.days.from_now.utc
 	else
 		Time.now.utc
 	end
 end
 
 puts "Пожалуйства введите целое число:"
-day = gets.chomp
+day = gets.chomp.to_i
+
+# Test
 puts date_in_future(day)
+puts date_in_future([]) # => текущая дата
+puts date_in_future(2) # => текущая дата + 2 дня
