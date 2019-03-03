@@ -32,7 +32,7 @@ def rps_game_winner(game_array)
 		when "PS", "RP", "SR"
 			return  player2.join(' ')
 		when "PP", "RR", "SS"
-			return player2.join(' ')	
+			return player1.join(' ')	
 	end
 end
 
