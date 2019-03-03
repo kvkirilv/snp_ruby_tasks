@@ -21,39 +21,18 @@ class WrongNumberOfPlayersError < StandardError ; end
 class NoSuchStrategyError < StandardError ; end
 
 def rps_game_winner(game_array)
-	raise WrongNumberOfPlayersError if game_array.length  != 2
+	raise WrongNumberOfPlayersError unless game_array.length  == 2
 	strategy_array = ["P", "S", "R"]
-	raise NoSuchStrategyError if !strategy_array.include?(game_array[0][1].to_s.upcase) || !strategy_array.include?(game_array[1][1].to_s.upcase)
+	raise NoSuchStrategyError unless strategy_array.include?(game_array[0][1].to_s.upcase) || strategy_array.include?(game_array[1][1].to_s.upcase)
 	player1 = game_array[0]
 	player2 = game_array[1]
-	case player1[1]
-	when "P"
-		case player2[1] 
-			when "P"
-				return player1.join(' ')
-			when "S" 
-				return player2.join(' ')
-			when "R"
-				return player1.join(' ')
-		end
-	when "S"
-		case player2[1] 
-			when "P"
-				return player1.join(' ')
-			when "S" 
-				return player1.join(' ')
-			when "R"
-				return player2.join(' ')
-		end
-	when "R"
-		case player2[1] 
-			when "P"
-				return player2.join(' ')
-			when "S" 
-				return player1.join(' ')
-			when "R"
-				return player1.join(' ')
-		end
+	case player1[1]+player2[1]
+		when "SP", "PR", "RS"
+			return player1.join(' ')
+		when "PS", "RP", "SR"
+			return  player2.join(' ')
+		when "PP", "RR", "SS"
+			return player2.join(' ')	
 	end
 end
 
@@ -70,4 +49,9 @@ player2[0] = gets.chomp
 puts "Заполните ход второго игрока P - бумага, S - ножницы, R - камень"
 player2[1] = gets.chomp
 game_array << player2
+
+#Test
 puts rps_game_winner(game_array)
+puts rps_game_winner([%w[player1 P], %w[player2 A]]) # => NoSuchStrategyError
+puts rps_game_winner([%w[player1 P], %w[player2 S]]) # => 'player2 S'
+puts rps_game_winner([%w[player1 P], %w[player2 P]]) # => 'player1 P'
