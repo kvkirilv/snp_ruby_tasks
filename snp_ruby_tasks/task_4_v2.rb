@@ -24,7 +24,7 @@ def sort_array(array = [])
 		end
 	end
 	new_array << min_array_val
-	return new_array
+	new_array
 end
 
 puts "Пожалуйста введите массив целых чисел через ENTER:"
@@ -34,4 +34,10 @@ while true
 	break if input.empty?
 	array << input.to_i
 end
-puts sort_array(array) 
+
+#Test
+puts sort_array(array)
+puts sort_array([]) # => []
+puts sort_array([2, 4, 6, 8]) # => [8, 4, 6, 2, 2]
+puts sort_array([1]) # => [1, 1]
+puts sort_array([1, 2, 1, 3]) # => [3, 2, 3, 1, 1] 	
