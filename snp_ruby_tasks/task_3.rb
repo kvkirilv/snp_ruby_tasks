@@ -12,12 +12,13 @@ max_odd([2, 2, 4]) # => nil
 
 def max_odd(array = []) 
 	max_elem = nil	
-	array.each do |item|
-		if (item.to_i % 2 != 0 && item.to_i > max_elem.to_i)
-			max_elem = item.to_i
-		end
-	end
-	return max_elem
+	array.inject(0) do |best, w|
+		w = w.to_s.to_f.to_i 
+		w = 0 if w % 2 == 0
+		best = best.to_s.to_f.to_i 		
+		max_elem = w > best ? w : best 	
+	end	
+	max_elem == 0 ? nil : max_elem
 end
 
 puts "Пожалуйста введите массив значений через ENTER:"
@@ -28,6 +29,11 @@ while true
 	array << input
 end
 
-puts(max_odd(array))
-
+#Test
+puts max_odd(array) # Пользовательский массив 
+puts max_odd([1, 2, 3, 4, 4]) # => 3
+puts max_odd([21.0, 2, 3, 4, 4]) # => 21
+puts max_odd(['ololo', 2, 3, 4, [1, 2], nil]) # => 3
+puts max_odd(%w[ololo fufufu]) # => nil
+puts max_odd([2, 2, 4]) # => nil 
 
