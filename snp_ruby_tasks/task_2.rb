@@ -9,7 +9,7 @@ coincidence() # => []
 coincidence([nil, 1, 'foo', 4, 2, 2.5], (1..3)) # => [1, 2, 2.5] 
 =end
 
-def coincidence(array = [], range = Range.new())
+def coincidence(array = [], range = (0..0))
 	array.select {|v| range.include?(v)}	
 end
 
