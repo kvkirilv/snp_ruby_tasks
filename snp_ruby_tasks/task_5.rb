@@ -15,9 +15,9 @@ require 'active_support/all'
 
 def date_in_future(day)		
 	if day.is_a?(Integer) 
-		day.days.from_now.utc
+		day.days.from_now.strftime("%d-%m-%y %H:%M:%S")
 	else
-		Time.now.utc
+		Time.now.strftime("%d-%m-%y %H:%M:%S")
 	end
 end
 
