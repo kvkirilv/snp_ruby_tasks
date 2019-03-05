@@ -11,14 +11,7 @@ max_odd([2, 2, 4]) # => nil
 =end
 
 def max_odd(array = []) 
-	max_elem = nil	
-	array.inject(0) do |best, w|
-		w = w.to_s.to_f.to_i 
-		w = 0 if w % 2 == 0
-		best = best.to_s.to_f.to_i 		
-		max_elem = w > best ? w : best 	
-	end	
-	max_elem == 0 ? nil : max_elem
+	array.map{|item| item.to_s.to_i}.find_all {|i|  i % 2 != 0 }.max
 end
 
 puts "Пожалуйста введите массив значений через ENTER:"
