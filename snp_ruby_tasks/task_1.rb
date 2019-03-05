@@ -2,14 +2,12 @@
 Разработайте метод palindrome?(string), который будет определять, является ли
 строка string палиндром (строкой, которая читается одинаково как с начала так и с
 конца), при условии игнорирования пробелов, знаков препинания и регистра. 
-
 =end
 
 def palindrome?(string)
 	return false if string.nil?	
 	string = string.to_s.downcase.gsub(/[^0-9A-Za-zА-Яа-я]/, '')				
-	return true if string == string.reverse 	#Проверяю что строка равна "перевернутой" строке
-	return false
+	string == string.reverse 	#Проверяю что строка равна "перевернутой" строке
 end
 
 puts "Введите строку:"
