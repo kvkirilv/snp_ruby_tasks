@@ -10,10 +10,7 @@ coincidence([nil, 1, 'foo', 4, 2, 2.5], (1..3)) # => [1, 2, 2.5]
 =end
 
 def coincidence(array = [], range = ())
-	new_array = Array.new() 
-	unless range.to_a.empty?
-		new_array = array.keep_if{|item| range.include?(item)} #Пример нашел тут  https://apidock.com/ruby/Array/keep_if 
-	end 	
+	array.select {|v| range.include?(v)}	
 end
 
 puts "Пожалуйста заполните элементами массив значений через ENTER:"
