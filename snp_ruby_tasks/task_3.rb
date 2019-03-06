@@ -11,7 +11,7 @@ max_odd([2, 2, 4]) # => nil
 =end
 
 def max_odd(array = []) 
-    array.find_all{|i|  i if i.to_s.to_i == i && i.is_a?(Numeric) && i.to_i.odd?}.max.to_i
+    array.find_all{|i|  i if i.to_s.to_f % 2 == 1}.max.to_i
 end
 
 puts "Пожалуйста введите массив значений через ENTER:"
@@ -29,6 +29,6 @@ puts max_odd([21.0, 23.1, 3, 4, 4]) # => 21
 puts max_odd(['ololo', 2, 3, 4, [1, 2], nil]) # => 3
 puts max_odd(%w[ololo fufufu]) # => nil
 puts max_odd([2, 2, 4]) # => nil 
-puts max_odd([23.1, 3, 4]) # => nil 
+puts max_odd([23.1, 9, 25.5, 3, 4]) # => nil 
 
 
