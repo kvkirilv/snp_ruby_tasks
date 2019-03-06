@@ -25,7 +25,7 @@ end
 #Test
 puts max_odd(array) # Пользовательский массив 
 puts max_odd([1, 2, 3, 4, 4]) # => 3
-puts max_odd([21.0, 23.1, 3, 4, 4]) # => 21
+puts max_odd([21.0, 23.5, 3, 4, 4]) # => 21
 puts max_odd(['ololo', 2, 3, 4, [1, 2], nil]) # => 3
 puts max_odd(%w[ololo fufufu]) # => nil
 puts max_odd([2, 2, 4]) # => nil 
