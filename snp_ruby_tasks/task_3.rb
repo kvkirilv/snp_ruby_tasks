@@ -11,7 +11,7 @@ max_odd([2, 2, 4]) # => nil
 =end
 
 def max_odd(array = []) 
-    array.find_all{|i|  i if i.to_s.to_f % 2 == 1}.max.to_i
+   array.find_all{|i|  i.to_i if i.to_s.to_f % 2 == 1 && i.to_s.to_f != 0}.max
 end
 
 puts "Пожалуйста введите массив значений через ENTER:"
