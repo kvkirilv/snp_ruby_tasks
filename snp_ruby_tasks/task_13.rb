@@ -3,19 +3,25 @@
 вы могли его использовать как "foo".palindrome? # => false.	
 =end
 
-class String
+module Palindrome
   def palindrome?
-   if !(self.empty? && !self.nil?) 
-		self.to_s.downcase!
-		self.gsub!(/[^0-9A-Za-zА-Яа-я]/, '')		
-		if self  == self.reverse			
-			return true
-		else
-			return false
-		end
-	end
+  	return false if self.nil?
+	string = self.to_s.downcase.gsub(/[^0-9A-Za-zА-Яа-я]/, '')				
+	string == string.reverse
   end
 end
 
-puts "anna".palindrome?
+class String
+  include Palindrome
+end
 
+#Test
+puts "Введите строку:"
+string = gets.chomp.to_s
+while string.empty?
+	puts "Я не понимаю что вы ввели!!!! Повторите:"
+	string = gets.chomp.to_s
+end
+
+puts string.palindrome?
+puts "vasya".palindrome?
