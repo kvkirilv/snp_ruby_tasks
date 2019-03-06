@@ -7,11 +7,11 @@ count_words("A man, a plan, a canal -- Panama")
 count_words "Doo bee doo bee doo"
 # => {'doo' => 3, 'bee' => 2}
 =end
+
 def count_words(string)
-	sring = string.gsub!(/[^0-9A-Za-zА-Яа-я ]/, '').downcase!.split(" ")
-    stat = Hash.new(0)
-	sring.each { |word| stat[word] += 1 }
-	return stat.sort_by {|k, v| v }.reverse!
+	string.to_s.downcase!.scan(/\w+/).inject(Hash.new(0)) { |k, v| k[v] += 1; k }
 end
 
-puts count_words("A man, a plan, a canal -- Panama")
+#Test
+puts count_words("A man, a plan, a canal -- Panama") # => {'a' => 3, 'man' => 1, 'canal' => 1, 'panama' => 1, 'plan' => 1}
+puts count_words "Doo bee doo bee doo" # => {'doo' => 3, 'bee' => 2}

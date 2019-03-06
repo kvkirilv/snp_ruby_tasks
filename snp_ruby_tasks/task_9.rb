@@ -24,4 +24,8 @@ def connect_hashes(hash1, hash2)
 	return new_hash.sort_by { |key, val| val }
 end
 
-puts connect_hashes({ a: 8, b: 9, d: 11 }, { c: 12, a: 15 }) 
+#Test
+#puts connect_hashes({ a: 8, b: 9, d: 11 }, { c: 12, a: 15 })  # => { c: 11, b: 12 }
+puts connect_hashes({ a: 2, b: 12 }, { c: 11, e: 5 }) # => { c: 11, b: 12 }
+puts connect_hashes({ a: 13, b: 9, d: 11 }, { c: 12, a: 15 }) # => { d: 11, c:12, a: 13 }
+puts connect_hashes({ a: 14, b: 12 }, { c: 11, a: 15 }) # => { c: 11, b: 12, a:15 }
