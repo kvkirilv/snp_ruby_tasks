@@ -12,18 +12,22 @@ class Dessert
         @name, @calories = name, calories
     end
 
-    def healthy
-    	if @calories < 200
-    		return true 
-    	else
-    		return false 
-    	end    	
+    def healthy?
+        (0...200).include?(@calories) 		
     end 
 
-    def delicious
-    	return true 
+    def delicious?
+        true 
     end
 end
 
-dessert = Dessert.new('cake', 250)
-puts dessert.healthy
+#Test
+puts "Напишите название десерта:"
+name = gets.chomp.to_s
+puts "Напишите калорийность десерта:"
+calories = gets.chomp.to_i
+
+dessert = Dessert.new(name, calories)
+puts dessert.healthy?
+puts dessert.delicious?
+
