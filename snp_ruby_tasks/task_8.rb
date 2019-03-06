@@ -10,13 +10,8 @@ multiply_numbers(2.3) # => 6
 multiply_numbers([5, 6, 4]) # => 120
 =end
 
-def multiply_numbers(inputs = nil)
-	return nil if inputs.nil?	
-	inputs = inputs.to_s.gsub(/[^0-9]/, '')
-	return nil if inputs.empty?
-	multy = 1
-	inputs.split("").each {|item|  multy = multy * item.to_i}
-	return multy
+def multiply_numbers(inputs = "")	
+	inputs.to_s.scan(/\d/).inject{|sum, n| sum.to_i * n.to_i }
 end
 
 # Test
