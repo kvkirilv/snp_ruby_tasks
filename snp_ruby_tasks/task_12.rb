@@ -12,35 +12,37 @@ class Dessert
         @name, @calories = name, calories
     end
 
-    def healthy
-        if @calories < 200
-            return true 
-        else
-            return false 
-        end     
+    def healthy?
+        (0...200).include?(@calories)       
     end 
 
-    def delicious
-        return true 
+    def delicious?
+        true 
     end
 end
 
 class JellyBean < Dessert
     attr_accessor :flavor
     def initialize(name, calories, flavor)
-        @name, @calories, @flavor = name, calories, flavor
+        super(name, calories) 
+        @flavor = flavor
     end
 
-    def delicious
-        if @flavor == "black licorice"
-            return false
-        else
-            return true
-        end
+    def delicious?
+        flavor != "black licorice"            
     end
 end
 
-jelly = JellyBean.new('jelly', 199, "black licorice")
-puts jelly.name
-puts jelly.flavor
-puts jelly.delicious
+#Test
+puts "Напишите название десерта:"
+name = gets.chomp.to_s
+puts "Напишите калорийность десерта:"
+calories = gets.chomp.to_i
+puts "Напишите аромат:"
+flavor = gets.chomp.to_s
+
+jellybean = JellyBean.new(name, calories, flavor)
+puts jellybean.healthy?
+puts jellybean.delicious?
+
+
