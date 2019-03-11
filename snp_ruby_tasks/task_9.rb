@@ -16,16 +16,16 @@ connect_hashes({ a: 14, b: 12 }, { c: 11, a: 15 }) # => { c: 11, b: 12, a:
 15 }
 =end
 
-def connect_hashes(hash1, hash2)	
-	hash1.each {|k, v| hash1.delete(k) if v < 10}
-	hash2.each {|k, v| hash2.delete(k) if v < 10}
-	hash1.merge(hash2)   #=> {"a"=>100, "b"=>254, "c"=>300}
-	new_hash = hash1.merge(hash2){|key, oldval, newval|  newval if oldval <= newval} # Как дополнить условие для oldval > newval
-	return new_hash.sort_by { |key, val| val }
+def connect_hashes(hash1, hash2)
+	if hash1.values.inject(:+) <= hash2.values.inject(:+)
+		hash1.merge(hash2).delete_if {|key, value| value < 10 }.sort_by { |key, val| val }.to_h
+	else
+		hash2.merge(hash1).delete_if {|key, value| value < 10 }.sort_by { |key, val| val }.to_h
+	end
 end
 
 #Test
-#puts connect_hashes({ a: 8, b: 9, d: 11 }, { c: 12, a: 15 })  # => { c: 11, b: 12 }
+puts connect_hashes({ a: 8, b: 9, d: 11 }, { c: 12, a: 15 }) 
 puts connect_hashes({ a: 2, b: 12 }, { c: 11, e: 5 }) # => { c: 11, b: 12 }
 puts connect_hashes({ a: 13, b: 9, d: 11 }, { c: 12, a: 15 }) # => { d: 11, c:12, a: 13 }
 puts connect_hashes({ a: 14, b: 12 }, { c: 11, a: 15 }) # => { c: 11, b: 12, a:15 }
